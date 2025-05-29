@@ -1,3 +1,6 @@
+let humanScore = 0;
+let computerScore = 0;
+
 function getComputerChoice() {
     const randomNum = Math.random() * 100;
     if (randomNum < 33) {
