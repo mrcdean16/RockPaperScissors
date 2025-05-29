@@ -18,41 +18,24 @@ let getHumanChoice = () => prompt("Pick a Value:");
 function playRound(humanChoice, computerChoice) {
     // Converts to lowercase so the capitalization of user-input doesn't matter
     humanChoice = humanChoice.toLowerCase();
-    if (humanChoice === computerChoice)
-        return console.log("Draw! Nobody Wins.");
+    const match = `${humanChoice}-${computerChoice}`;
 
-    if (humanChoice === "rock" && computerChoice === "scissors") {
-        humanScore++;
-        return console.log("You Win! Rock beats Scissors.");
-    }
-        
-    if (humanChoice === "rock" && computerChoice === "paper") {
-        computerScore++;
-        return console.log("You Lose! Paper beats Rock.");
-    }
+    switch (match) {
+        case "rock-scissors":
+        case "paper-rock":
+        case "scissors-paper":
+            humanScore++;
+            return console.log(`You Win! ${humanChoice} beats ${computerChoice}.`);
 
-    if (humanChoice === "paper" && computerChoice === "rock") {
-        humanScore++;
-        return console.log("You Win! Paper beats Rock.");
-    }
+        case "rock-paper":
+        case "paper-scissors":
+        case "scissors-rock":
+            computerScore++;
+            return console.log(`You Lose! ${computerChoice} beats ${humanChoice}.`);
         
-    if (humanChoice === "paper" && computerChoice === "scissors") {
-        computerScore++;
-        return console.log("You Lose! Scissors beats Paper.");
+        default:
+            return console.log("Draw! Nobody Wins.");
     }
-        
-
-    if (humanChoice === "scissors" && computerChoice === "paper") {
-        humanScore++;
-        return console.log("You Win! Scissors beats Paper.");
-    }
-        
-    if (humanChoice === "scissors" && computerChoice === "rock") {
-        computerScore++;
-        return console.log("You Lose! Rock beats Scissors");
-    }
-        
-
 }
 
 function playGame() {
